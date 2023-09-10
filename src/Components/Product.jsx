@@ -21,6 +21,7 @@ const Container = styled.div`
   flex: 1;
   margin: 5px;
   min-width: 280px;
+  max-width: 280px;
   height: 350px;
   position: relative;
   display: flex;
@@ -39,14 +40,16 @@ const Image = styled.img`
   z-index: 2;
   /* width: 100%; */
 `;
-const Cricle = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 50px;
-  border-radius: 50%;
-  background-color: white;
-  position: absolute;
-`;
+// const Cricle = styled.div`
+//   min-width: 280px;
+//   height: 350px;
+//   padding: 50px;
+//   top: 0;
+//   left: 0;
+//   border-radius: 50%;
+//   background-color: white;
+//   position: absolute;
+// `;
 
 const Icon = styled.div`
   height: 50px;
@@ -68,19 +71,17 @@ export const Product = ({ item }) => {
   return (
     <Container>
       <Image src={item.img} />
-      <Cricle>
-        <Info>
-          <Icon>
-            <FavoriteBorderOutlinedIcon />
-          </Icon>
-          <Icon>
-            <SearchOutlinedIcon />
-          </Icon>
-          <Icon>
-            <ShoppingCartOutlinedIcon />
-          </Icon>
-        </Info>
-      </Cricle>
+      <Info>
+        <Icon>
+          <FavoriteBorderOutlinedIcon />
+        </Icon>
+        <Icon>
+          <SearchOutlinedIcon />
+        </Icon>
+        <Icon>
+          <ShoppingCartOutlinedIcon />
+        </Icon>
+      </Info>
     </Container>
   );
 };
