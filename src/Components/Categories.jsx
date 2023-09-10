@@ -9,6 +9,7 @@ const Container = styled.div`
   /* flex-direction: column; */
 
   gap: 20px;
+  background: #fdf4f4;
 `;
 
 const Title = styled.h1`
