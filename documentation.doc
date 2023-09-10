@@ -3,3 +3,5 @@ used styled component library for styling
 materail ui library for the icons
 
 one of the advantage of using materail UI is that it allows us to pass Props
+
+slider created without using a library/ custom library
