@@ -15,7 +15,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   ${mobile({ width: "90%" })} /* gap: 10px; */
 
-  width: 40%;
+  width: 20%;
   padding: 20px;
   display: flex;
   flex-direction: column;

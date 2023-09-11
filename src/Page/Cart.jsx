@@ -127,7 +127,7 @@ const Summary = styled.div`
   border-radius: 10px;
   padding: 20px;
   height: 30vh;
-  margin-top: ;
+  /* margin-top: ; */
   ${mobile({ fontSize: "20px", height: "30vh" })}
 `;
 
