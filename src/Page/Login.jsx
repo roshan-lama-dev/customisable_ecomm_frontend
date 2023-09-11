@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import GoogleIcon from "@mui/icons-material/Google";
 import { mobile } from "../responsive";
+import { NavLink } from "react-router-dom";
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
@@ -82,8 +83,17 @@ export const Login = () => {
           {/*         
           <Agreement>By creating an Account</Agreement> */}
           <LinkContainer>
+            <Link>
+              {" "}
+              <NavLink
+                style={{ textDecoration: "none", color: "inherit" }}
+                to="/register"
+              >
+                {" "}
+                CREATE AN ACCOUNT
+              </NavLink>
+            </Link>
             <Link>FORGOT PASSWORD?</Link>
-            <Link>CREATE AN ACCOUNT</Link>
           </LinkContainer>
         </Form>
         <Button color="teal">Login</Button>

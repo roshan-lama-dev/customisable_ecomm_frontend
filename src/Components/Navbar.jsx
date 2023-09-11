@@ -3,6 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { mobile } from "../responsive";
+import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
   height: 60px;
@@ -87,8 +88,23 @@ export const Navbar = () => {
           <Logo>Ecomm</Logo>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>LOGIN</MenuItem>
+          <MenuItem>
+            <NavLink
+              style={{ textDecoration: "none", color: "inherit" }}
+              to="/register"
+            >
+              REGISTER
+            </NavLink>
+          </MenuItem>
+          <MenuItem>
+            {" "}
+            <NavLink
+              style={{ textDecoration: "none", color: "inherit" }}
+              to="/login"
+            >
+              LOGIN
+            </NavLink>
+          </MenuItem>
           <MenuItem>
             <Badge badgeContent={4} color="primary">
               <ShoppingCartIcon color="action" />
