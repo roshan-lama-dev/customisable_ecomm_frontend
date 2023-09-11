@@ -4,6 +4,7 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { useState } from "react";
 
 import { sliderItems } from "../data.js";
+import { mobile } from "../responsive.js";
 const Container = styled.div`
   width: 100%;
   height: calc(100vh - 20vh);
@@ -15,6 +16,7 @@ const Container = styled.div`
   overflow: hidden;
 
   margin-bottom: 20px;
+  ${mobile({ height: "60vh" })}
 `;
 
 const Arrow = styled.div`
@@ -34,6 +36,7 @@ const Arrow = styled.div`
   cursor: pointer;
   opacity: 0.5;
   z-index: 2;
+  ${mobile({ width: "40px", height: "40px" })}
 `;
 
 const Wrapper = styled.div`
@@ -56,6 +59,7 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  ${mobile({ display: "none" })}
 `;
 
 const Image = styled.img`
@@ -63,6 +67,7 @@ const Image = styled.img`
   width: 90%;
   object-fit: cover;
   /* border: 12px; */
+  ${mobile({ display: "none" })}
 `;
 const InfoContainer = styled.div`
   flex: 1;
@@ -71,12 +76,14 @@ const InfoContainer = styled.div`
 
 const Title = styled.h1`
   font-size: 70px;
+  ${mobile({ fontSize: "50px" })}
 `;
 const Desc = styled.p`
   margin: 50px 0px;
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 3px;
+  /* ${mobile({ fontSize: "15px" })} */
 `;
 const Button = styled.button`
   border: 2px solid gray;
@@ -85,6 +92,7 @@ const Button = styled.button`
   font-size: 24px;
   font-weight: bold;
   cursor: pointer;
+  ${mobile({ fontSize: "20px" })}
 `;
 
 export const Slider = () => {

@@ -6,6 +6,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
+import { mobile } from "../responsive";
 const Container = styled.div`
   padding: 20px;
   display: flex;
@@ -13,6 +14,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   /* align-items: flex-start; */
+  ${mobile({ display: "block" })}
 `;
 const Left = styled.div`
   flex: 1;
@@ -26,19 +28,24 @@ const Left = styled.div`
 
 const Logo = styled.h1`
   text-align: left;
+  ${mobile({ fontSize: "24px" })}
 `;
 const Desc = styled.p`
   margin: 20px 0px;
+  ${mobile({ fontSize: "15px", margin: "10px 0px" })}
 `;
 const SocialContainer = styled.div`
   /* width: 10px; */
   display: flex;
   gap: 20px;
+  ${mobile({ gap: "10px" })}
 `;
 const SocailIcon = styled.div`
   cursor: pointer;
   width: 40px;
   height: 40px;
+  ${mobile({ height: "35px", width: "35px" })}
+
   border-radius: 50%;
   color: white;
   display: flex;
@@ -53,9 +60,12 @@ const Center = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  ${mobile({ display: "none" })}
 `;
 
-const Title = styled.h3``;
+const Title = styled.h3`
+  ${mobile({ textAlign: "center" })}
+`;
 const List = styled.ul`
   margin: 30px 0px;
   list-style: none;
@@ -69,20 +79,22 @@ const ListItem = styled.li`
 `;
 const Right = styled.div`
   flex: 1;
+  ${mobile({ display: "none" })} /* gap: 10px; */
+
   /* margin:20px */
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-
-  /* gap: 10px; */
+  ${mobile({ padding: "10px" })}/* gap: 10px; */
 `;
 const ContactItem = styled.div`
   margin: 20px;
   display: flex;
   /* padding: ga; */
   gap: 10px;
+
   align-items: center;
   justify-content: center;
 `;
@@ -91,7 +103,7 @@ export const Footer = () => {
   return (
     <Container>
       <Left>
-        <Logo>Ecomm.</Logo>
+        <Logo>Ecomm. </Logo>
         <Desc>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus sit
           quos optio. Voluptatibus enim magni quae totam eius, doloremque eum

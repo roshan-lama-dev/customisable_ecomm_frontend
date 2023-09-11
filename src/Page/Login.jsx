@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import GoogleIcon from "@mui/icons-material/Google";
+import { mobile } from "../responsive";
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
@@ -11,6 +12,8 @@ const Container = styled.div`
   justify-content: center;
 `;
 const Wrapper = styled.div`
+  ${mobile({ width: "90%" })} /* gap: 10px; */
+
   width: 20%;
   padding: 20px;
   display: flex;
@@ -59,6 +62,7 @@ const Button = styled.button`
 
 const Link = styled.a`
   cursor: pointer;
+  ${mobile({ fontSize: "15px", fontWeight: "500" })}/* gap: 10px; */
 `;
 
 const LinkContainer = styled.div`

@@ -5,11 +5,13 @@ import { NewsLetter } from "../Components/NewsLetter";
 import { Footer } from "../Components/Footer";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { mobile } from "../responsive";
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
   gap: 50px;
+  ${mobile({ display: "block" })}
 `;
 const ImgContainer = styled.div`
   flex: 1;
@@ -25,6 +27,8 @@ const InfoContainer = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 70vh;
+  ${mobile({ height: "40vh" })}
+
   object-fit: cover;
 `;
 
@@ -40,6 +44,7 @@ const ProductDesc = styled.p`
 const Price = styled.span`
   font-size: 40px;
   font-weight: 100;
+  ${mobile({ fontSize: "30px" })}
 `;
 const FilterContainer = styled.div`
   display: flex;
@@ -101,6 +106,7 @@ const Button = styled.button`
   font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
+  ${mobile({ padding: "10px" })}
 
   &:hover {
   }
@@ -109,8 +115,8 @@ const FilterSizeOption = styled.option``;
 export const Product = () => {
   return (
     <Container>
-      <Navbar />
       <Announcement />
+      <Navbar />
 
       <Wrapper>
         <ImgContainer>

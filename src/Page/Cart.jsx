@@ -4,24 +4,34 @@ import { Announcement } from "../Components/Announcement";
 import { Footer } from "../Components/Footer";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-const Container = styled.div``;
+import { mobile } from "../responsive";
+const Container = styled.div`
+  /* width: 100vw; */
+`;
 const Wrapper = styled.div`
   padding: 20px;
+  /* overflow: hidden; */
 `;
 const Title = styled.h1`
   text-align: center;
   font-weight: 300;
+  ${mobile({ fontSize: "25px" })}
 `;
 
 const Top = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* width: 100vw; */
+  justify-content: space-evenly;
+
   padding: 20px;
+  ${mobile({ padding: "0px", justifyContent: "space-evenly" })}
 `;
 
 const TopButton = styled.button`
   padding: 10px;
+  ${mobile({ padding: "5px", fontWeight: "500", fontSize: "12px" })}
+
   font-weight: 600;
   cursor: pointer;
   border: ${(props) => props.type === "filled" && "none"};
@@ -30,34 +40,42 @@ const TopButton = styled.button`
   color: ${(props) => props.type === "filled" && "white"};
 `;
 
-const TopTexts = styled.div``;
+const TopTexts = styled.div`
+  display: flex;
+`;
 const TopText = styled.span`
   text-decoration: underline;
   cursor: pointer;
   margin: 0px 20px;
+  ${mobile({ fontSize: "14px" })}
 `;
 const Bottom = styled.div`
   justify-content: space-between;
   display: flex;
+  ${mobile({ flexDirection: "column" })}
+  margin-top: 15px;
 `;
 
 const Info = styled.div`
-  flex: 3;
+  flex: 2;
 `;
 
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 10px;
+  /* margin: 10px; */
+  padding: 5px;
 `;
 const ProductDetail = styled.div`
-  flex: 2;
+  flex: 3;
   gap: 10px;
   display: flex;
 `;
 const Image = styled.img`
   height: 200px;
   width: 200px;
+
+  ${mobile({ height: "100px", width: "100px" })}
 `;
 const Details = styled.div`
   /* gap: 10px; */
@@ -90,10 +108,12 @@ const ProductAmountContainer = styled.div`
 const ProductAmount = styled.div`
   font-size: 24px;
   margin: 5px;
+  ${mobile({ fontSize: "20px" })}
 `;
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 300;
+  ${mobile({ fontSize: "20px" })}
 `;
 
 const Hr = styled.hr`
@@ -106,16 +126,21 @@ const Summary = styled.div`
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: 50vh;
+  height: 30vh;
+  margin-top: ;
+  ${mobile({ fontSize: "20px", height: "30vh" })}
 `;
 
 const SummaryTitle = styled.h1`
   font-weight: 200;
   text-transform: uppercase;
+  ${mobile({ fontSize: "25px" })}
 `;
 const SummaryItem = styled.div`
   display: flex;
   margin: 30px 0px;
+  ${mobile({ margin: "20px 0px" })}
+
   justify-content: space-between;
   font-weight: ${(props) => props.type === "total" && "500"};
   font-size: ${(props) => props.type === "total" && "24px"};
@@ -130,6 +155,7 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
   font-weight: 600;
+  ${mobile({ padding: "5px", fontWeight: "100" })}
 `;
 export const Cart = () => {
   return (
@@ -225,7 +251,6 @@ export const Cart = () => {
               <SumaryItemText>Total</SumaryItemText>
               <SummaryItemPrice>$80</SummaryItemPrice>
             </SummaryItem>
-
             <Button>CHECK OUT</Button>
           </Summary>
         </Bottom>

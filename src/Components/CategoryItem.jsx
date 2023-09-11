@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 const Container = styled.div`
   flex: 1;
 
-  height: 50vh;
+  height: 40vh;
   position: relative;
   /* border-radius: 20px; */
 `;
