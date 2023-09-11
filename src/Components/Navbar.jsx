@@ -4,6 +4,9 @@ import { Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 const Container = styled.div`
   height: 60px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px; */
 `;
 
 const Wrapper = styled.div`

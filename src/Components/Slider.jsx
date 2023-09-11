@@ -13,8 +13,8 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
-  /* padding: 20px; */
-  /* margin: 20px; */
+
+  margin-bottom: 20px;
 `;
 
 const Arrow = styled.div`
@@ -48,6 +48,7 @@ const Slide = styled.div`
   /* justify-content: center; */
   height: 100vh;
   width: 100vw;
+  padding: 20px;
 `;
 const ImageContainer = styled.div`
   flex: 1;
