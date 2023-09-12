@@ -74,10 +74,13 @@ const LinkContainer = styled.div`
   text-decoration: underline;
 `;
 
+const apiCaller = async () => {
+  return await axiosHelper();
+};
 export const Login = () => {
   useEffect(() => {
-    const data = axiosHelper();
-    console.log(data);
+    const result = apiCaller();
+    console.log(result);
   });
   return (
     <Container>
