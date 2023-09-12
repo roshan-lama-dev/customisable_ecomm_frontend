@@ -7,6 +7,7 @@ import { Register } from "./Page/Register";
 import { ProductList } from "./Page/ProductList";
 import { Routes, Route } from "react-router-dom";
 function App() {
+  console.log();
   return (
     <>
       <Routes>
