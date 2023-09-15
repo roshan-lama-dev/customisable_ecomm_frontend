@@ -130,7 +130,7 @@ export const Product = () => {
     const getProduct = async () => {
       try {
         const { data } = await publicRequest.get("/products/find/" + id);
-        const { status, message } = data;
+        const { message } = data;
         setProduct(message);
         console.log(message);
       } catch (error) {
