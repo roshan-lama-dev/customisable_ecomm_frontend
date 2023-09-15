@@ -2,8 +2,7 @@ import { styled } from "styled-components";
 import GoogleIcon from "@mui/icons-material/Google";
 import { mobile } from "../responsive";
 import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
-import { axiosHelper } from "../helper/AxiosHelper";
+
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
@@ -74,14 +73,7 @@ const LinkContainer = styled.div`
   text-decoration: underline;
 `;
 
-const apiCaller = async () => {
-  return await axiosHelper();
-};
 export const Login = () => {
-  useEffect(() => {
-    const result = apiCaller();
-    console.log(result);
-  });
   return (
     <Container>
       <Wrapper>

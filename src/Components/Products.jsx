@@ -36,7 +36,7 @@ const Title = styled.h1`
 export const Products = ({ cat, filters, sort }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-
+  console.log(filteredProducts);
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -65,6 +65,22 @@ export const Products = ({ cat, filters, sort }) => {
         )
       );
   }, [products, cat, filters]);
+
+  useEffect(() => {
+    if (sort === "newest") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.createdAt - b.createdAt)
+      );
+    } else if (sort === "asc") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.price - b.price)
+      );
+    } else if (sort === "desc") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => b.price - a.price)
+      );
+    }
+  }, [sort]);
   return (
     <>
       <Container>
@@ -74,7 +90,9 @@ export const Products = ({ cat, filters, sort }) => {
       <Container>
         {cat
           ? filteredProducts.map((item, i) => <Product key={i} item={item} />)
-          : products.map((item, i) => <Product key={i} item={item} />)}
+          : products
+              .slice(0, 8)
+              .map((item, i) => <Product key={i} item={item} />)}
       </Container>
     </>
   );

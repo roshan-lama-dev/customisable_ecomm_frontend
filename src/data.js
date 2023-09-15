@@ -27,7 +27,7 @@ export const categories = [
     id: 1,
     img: "https://images.unsplash.com/photo-1431361426216-5b0506d60eb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80",
     title: "Bridal Wear",
-    cat: "Women",
+    cat: "women",
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ export const categories = [
     id: 3,
     img: "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80",
     title: "Men's Clothing",
-    cat: "man",
+    cat: "men",
   },
 ];
 
