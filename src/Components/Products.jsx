@@ -2,6 +2,8 @@ import { styled } from "styled-components";
 import { popularProducts } from "../data";
 import { Product } from "./Product";
 import { mobile } from "../responsive";
+import { useEffect, useState } from "react";
+import axios from "axios";
 const Container = styled.div`
   padding: 20px;
   gap: 10px;
@@ -31,7 +33,38 @@ const Title = styled.h1`
   text-transform: uppercase;
   /* ${mobile({ fontSize: "25px" })} */
 `;
-export const Products = () => {
+export const Products = ({ cat, filters, sort }) => {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const { data } = await axios.get(
+          cat
+            ? `http://localhost:5000/v1/products?category=${cat}`
+            : "http://localhost:5000/v1/products"
+        );
+        const { status, message } = data;
+        setProducts(message);
+        console.log(status, message);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProducts();
+  }, [cat]);
+
+  useEffect(() => {
+    cat &&
+      setFilteredProducts(
+        products.filter((item) =>
+          Object.entries(filters).every(([key, value]) =>
+            item[key].includes(value)
+          )
+        )
+      );
+  }, [products, cat, filters]);
   return (
     <>
       <Container>
@@ -39,9 +72,9 @@ export const Products = () => {
         <Hr />
       </Container>
       <Container>
-        {popularProducts.map((item, i) => (
-          <Product key={i} item={item} />
-        ))}
+        {cat
+          ? filteredProducts.map((item, i) => <Product key={i} item={item} />)
+          : products.map((item, i) => <Product key={i} item={item} />)}
       </Container>
     </>
   );

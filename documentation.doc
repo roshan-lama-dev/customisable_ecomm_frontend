@@ -5,3 +5,13 @@ materail ui library for the icons
 one of the advantage of using materail UI is that it allows us to pass Props
 
 slider created without using a library/ custom library
+
+
+
+onbackend:
+express library to create a restful apis and return json format result
+mongo db and mongoose queries to CRUD operate
+used library like cryptojs to hash the password.
+also jsonwebtoken to make the login process more secure 
+implemented complex mongodb queries to extract data from the database.
+implemented stripe api for payment.
