@@ -5,11 +5,18 @@ import { Footer } from "../Components/Footer";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { mobile } from "../responsive";
+import { useSelector } from "react-redux";
+import StripeCheckout from "react-stripe-checkout";
+
+const KEY = import.meta.env.VITE_REACT_APP_STRIPE;
+
 const Container = styled.div`
   /* width: 100vw; */
 `;
 const Wrapper = styled.div`
   padding: 20px;
+  margin-bottom: 50px;
+
   /* overflow: hidden; */
 `;
 const Title = styled.h1`
@@ -126,7 +133,7 @@ const Summary = styled.div`
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: 30vh;
+  // height: 30vh;
   /* margin-top: ; */
   ${mobile({ fontSize: "20px", height: "30vh" })}
 `;
@@ -158,6 +165,7 @@ const Button = styled.button`
   ${mobile({ padding: "5px", fontWeight: "100" })}
 `;
 export const Cart = () => {
+  const cart = useSelector((state) => state.cart);
   return (
     <Container>
       <Announcement />
@@ -175,69 +183,52 @@ export const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            <Product>
-              <ProductDetail>
-                <Image src="https://images.unsplash.com/photo-1604176354204-9268737828e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" />
+            {cart.products.map((product) => (
+              <>
+                <Product>
+                  <ProductDetail>
+                    <Image src={product?.img} />
 
-                <Details>
-                  <ProductName>
-                    <b>Product Name: </b>Test Product
-                  </ProductName>
-                  <ProductId>
-                    <b>Product ID:</b> 132312
-                  </ProductId>
-                  <ProductColor color="black" />
+                    <Details>
+                      <ProductName>
+                        <b>Product Name: </b>
+                        {product?.title}
+                      </ProductName>
+                      <ProductId>
+                        <b>Product ID:</b> {product?._id}
+                      </ProductId>
+                      <ProductColor color={product?.color} />
 
-                  <ProductSize>
-                    <b>Size:</b> XL
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <AddIcon />
+                      <ProductSize>
+                        <b>Size:</b>
+                        {product?.size}
+                      </ProductSize>
+                    </Details>
+                  </ProductDetail>
+                  <PriceDetail>
+                    <ProductAmountContainer>
+                      <AddIcon />
 
-                  <ProductAmount>$20</ProductAmount>
-                  <RemoveIcon />
-                </ProductAmountContainer>
-                <ProductPrice>$30</ProductPrice>
-              </PriceDetail>
-            </Product>
-            <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src="https://images.unsplash.com/photo-1604176354204-9268737828e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" />
-
-                <Details>
-                  <ProductName>
-                    <b>Product Name: </b>Test Product
-                  </ProductName>
-                  <ProductId>
-                    <b>Product ID:</b> 132312
-                  </ProductId>
-                  <ProductColor color="black" />
-
-                  <ProductSize>
-                    <b>Size:</b> XL
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <AddIcon />
-
-                  <ProductAmount>$20</ProductAmount>
-                  <RemoveIcon />
-                </ProductAmountContainer>
-                <ProductPrice>$30</ProductPrice>
-              </PriceDetail>
-            </Product>
+                      <ProductAmount>{product?.quantity} </ProductAmount>
+                      <RemoveIcon />
+                    </ProductAmountContainer>
+                    <ProductPrice>
+                      ${product?.price * product?.quantity}{" "}
+                    </ProductPrice>
+                  </PriceDetail>
+                </Product>
+                <Hr />
+              </>
+            ))}
           </Info>
           <Summary>
             <SummaryTitle>Order Summary</SummaryTitle>
             <SummaryItem>
-              <SumaryItemText>SubTotal</SumaryItemText>
-              <SummaryItemPrice>$80</SummaryItemPrice>
+              <SumaryItemText>SubTotal: </SumaryItemText>
+              <SummaryItemPrice>
+                {" "}
+                ${(Math.round(cart?.total * 100) / 100).toFixed(2)}
+              </SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SumaryItemText>Estimated Shipping</SumaryItemText>
@@ -249,9 +240,12 @@ export const Cart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SumaryItemText>Total</SumaryItemText>
-              <SummaryItemPrice>$80</SummaryItemPrice>
+              <SummaryItemPrice>
+                ${(Math.round(cart?.total * 100) / 100).toFixed(2)}
+              </SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECK OUT</Button>
+            {/* <Button>CHECK OUT</Button> */}
+            <StripeCheckout></StripeCheckout>
           </Summary>
         </Bottom>
       </Wrapper>

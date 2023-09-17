@@ -88,7 +88,9 @@ export const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>Ecomm</Logo>
+          <NavLink style={{ textDecoration: "none", color: "inherit" }} to="/">
+            <Logo>Ecomm</Logo>
+          </NavLink>
         </Center>
         <Right>
           <MenuItem>
@@ -109,9 +111,14 @@ export const Navbar = () => {
             </NavLink>
           </MenuItem>
           <MenuItem>
-            <Badge badgeContent={quantity} color="primary">
-              <ShoppingCartIcon color="action" />
-            </Badge>
+            <NavLink
+              style={{ textDecoration: "none", color: "inherit" }}
+              to="/cart"
+            >
+              <Badge badgeContent={quantity} color="primary">
+                <ShoppingCartIcon color="action" />
+              </Badge>
+            </NavLink>
           </MenuItem>
         </Right>
       </Wrapper>

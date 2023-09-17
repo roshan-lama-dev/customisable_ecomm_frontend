@@ -82,7 +82,10 @@ export const Product = ({ item }) => {
           <FavoriteBorderOutlinedIcon />
         </Icon>
         <Icon>
-          <Link to={`/product/${item._id}`}>
+          <Link
+            to={`/product/${item._id}`}
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
             <SearchOutlinedIcon />
           </Link>
         </Icon>

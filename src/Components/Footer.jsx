@@ -8,6 +8,8 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import { mobile } from "../responsive";
 const Container = styled.div`
+  color: black;
+  background-color: teal;
   padding: 20px;
   display: flex;
   /* height: 50vh; */

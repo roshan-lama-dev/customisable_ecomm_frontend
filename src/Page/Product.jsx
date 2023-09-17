@@ -9,6 +9,9 @@ import { mobile } from "../responsive";
 import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../helper/AxiosHelper";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
@@ -124,6 +127,9 @@ export const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+
+  // initialise dispacth
+  const dispatch = useDispatch();
   console.log(color, size);
 
   useEffect(() => {
@@ -150,6 +156,18 @@ export const Product = () => {
 
   const handleClick = () => {
     // update cart
+    dispatch(addProduct({ ...product, quantity, color, size }));
+    toast["success"]("Product added", {
+      position: "top-right",
+      autoClose: 400,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+
+      theme: "dark",
+    });
+    setQuantity(1);
   };
   return (
     <Container>

@@ -48,12 +48,16 @@ export const CategoryItem = ({ item }) => {
   return (
     <>
       <Container>
-        <Link to ={`/products/${item.cat}`}  preventScrollReset={true}>
-        <Image src={item.img} />
-        <Info>
-          <Title>{item.title}</Title>
-          <Button>SHOP NOW</Button>
-        </Info>
+        <Link
+          to={`/products/${item.cat}`}
+          style={{ textDecoration: "none", color: "inherit" }}
+          preventScrollReset={true}
+        >
+          <Image src={item.img} />
+          <Info>
+            <Title>{item.title}</Title>
+            <Button>SHOP NOW</Button>
+          </Info>
         </Link>
       </Container>
     </>
