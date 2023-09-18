@@ -7,7 +7,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
-
+import image from "../assets/Roshan.png";
 const KEY = import.meta.env.VITE_REACT_APP_STRIPE;
 
 const Container = styled.div`
@@ -133,6 +133,7 @@ const Summary = styled.div`
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
+  height: fit-content;
   // height: 30vh;
   /* margin-top: ; */
   ${mobile({ fontSize: "20px", height: "30vh" })}
@@ -238,14 +239,24 @@ export const Cart = () => {
               <SumaryItemText>Shipping Discout</SumaryItemText>
               <SummaryItemPrice>$-5.90</SummaryItemPrice>
             </SummaryItem>
+            <Hr />
             <SummaryItem type="total">
               <SumaryItemText>Total</SumaryItemText>
               <SummaryItemPrice>
                 ${(Math.round(cart?.total * 100) / 100).toFixed(2)}
               </SummaryItemPrice>
             </SummaryItem>
-            {/* <Button>CHECK OUT</Button> */}
-            <StripeCheckout></StripeCheckout>
+            <StripeCheckout
+              name="Ecomm"
+              image={image}
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100}
+              stripeKey={KEY}
+            >
+              <Button>CHECK OUT</Button>
+            </StripeCheckout>
           </Summary>
         </Bottom>
       </Wrapper>
