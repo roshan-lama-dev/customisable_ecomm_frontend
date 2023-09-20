@@ -7,12 +7,8 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
-<<<<<<< HEAD
 import { useState } from "react";
 
-=======
-import image from "../assets/Roshan.png";
->>>>>>> d8f9a5f0b8fb55f87f7178ca5973df6d13c34399
 const KEY = import.meta.env.VITE_REACT_APP_STRIPE;
 
 const Container = styled.div`
@@ -264,12 +260,12 @@ export const Cart = () => {
             </SummaryItem>
             <StripeCheckout
               name="Ecomm"
-              image={image}
               billingAddress
               shippingAddress
               description={`Your total is $${cart.total}`}
               amount={cart.total * 100}
               stripeKey={KEY}
+              token={onToken}
             >
               <Button>CHECK OUT</Button>
             </StripeCheckout>
