@@ -7,8 +7,12 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
+<<<<<<< HEAD
 import { useState } from "react";
 
+=======
+import image from "../assets/Roshan.png";
+>>>>>>> d8f9a5f0b8fb55f87f7178ca5973df6d13c34399
 const KEY = import.meta.env.VITE_REACT_APP_STRIPE;
 
 const Container = styled.div`
@@ -134,6 +138,7 @@ const Summary = styled.div`
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
+  height: fit-content;
   // height: 30vh;
   /* margin-top: ; */
   ${mobile({ fontSize: "20px", height: "30vh" })}
@@ -250,6 +255,7 @@ export const Cart = () => {
               <SumaryItemText>Shipping Discout</SumaryItemText>
               <SummaryItemPrice>$-5.90</SummaryItemPrice>
             </SummaryItem>
+            <Hr />
             <SummaryItem type="total">
               <SumaryItemText>Total</SumaryItemText>
               <SummaryItemPrice>
@@ -257,17 +263,15 @@ export const Cart = () => {
               </SummaryItemPrice>
             </SummaryItem>
             <StripeCheckout
-            
-            name="Ecomm Shop"
-            billingAddress
-            shippingAddress
-            description={`Your total is $${cart.total}`}
-            amount={cart.total*100}
-            token={onToken}
-            stripeKey={KEY}
+              name="Ecomm"
+              image={image}
+              billingAddress
+              shippingAddress
+              description={`Your total is $${cart.total}`}
+              amount={cart.total * 100}
+              stripeKey={KEY}
             >
-            <Button>CHECK OUT</Button>
-
+              <Button>CHECK OUT</Button>
             </StripeCheckout>
           </Summary>
         </Bottom>
