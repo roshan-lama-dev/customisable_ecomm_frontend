@@ -7,8 +7,9 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { userRequest } from "../helper/AxiosHelper";
+import {useHistory} from "react-router-dom";
 const KEY = import.meta.env.VITE_REACT_APP_STRIPE;
 
 const Container = styled.div`
@@ -173,10 +174,26 @@ export const Cart = () => {
 
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
-
+  const history = useHistory()
   const onToken = (token)=>{
     setStripeToken(token)
   }
+
+  useEffect(()=>{
+    const makeRequest = async ()=>{
+try {
+  const res = await userRequest.post("/checkout/payment",{
+    tokenId:stripeToken,
+    amount:cart.total * 100,
+  })
+  history.push("/success", {data:res.data});
+} catch (error) {
+  console.log(error)
+}
+
+    }
+   stripeToken && makeRequest()
+  },[stripeToken, cart.total, history])
 
   console.log(stripeToken)
   return (
